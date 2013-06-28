@@ -4,8 +4,19 @@
 # list people
 require 'pg'
 require 'pry'
+require 'rubygems'
+require 'sinatra'
+require 'sinatra/reloader' if development?
+#require 'dotenv'
 
-puts "Hey gurl"
+get '/' do
+  erb :address_book
+end
+
+post '/new_friend' do
+redirect to('/')
+end
+
 
 # get all the inputs
 # put them in the string
@@ -18,21 +29,21 @@ puts "Hey gurl"
 # passing a string of sql to the database
 
 # insert into database
-db = PG.connect(:dbname => 'address_book',
-  :host => 'localhost')
+#db = PG.connect(:dbname => 'address_book',
+#  :host => 'localhost')
 
-puts "what's your name girl?"
-name = gets.chomp
-sql = "insert into contacts (first) values ('#{name}')"
-db.exec(sql)
-sql = "select first, age from contacts"
-db.exec(sql) do |result|
-  result.each do |row|
-    puts row
-  end
-end
+#puts "what's your name girl?"
+#name = gets.chomp
+#sql = "insert into contacts (first) values ('#{name}')"
+#db.exec(sql)
+#sql = "select first, age from contacts"
+#db.exec(sql) do |result|
+#  result.each do |row|
+#    puts row
+#  end
+#end
 # db.close
-db.close
+#db.close
 
 # reads from database
 # db = PG.connect(:dbname => 'address_book',
