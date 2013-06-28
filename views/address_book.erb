@@ -1,4 +1,9 @@
 <h1>Here's your address book!</h1>
+
+<% @query_result.each do |row| %>
+  <p><%= row["first"] %> <%= row["last"] %>, <%= row["age"] %>, <%= row["gender"] %>, <%= row["dtgd"].upcase %>, <%= row["phone"] %> </p>
+<% end %>
+
 <form action = "/new_friend" method = "post">
   <input type = "text" name = "first" value = "first name" autofocus>
   <input type = "text" name = "last" value = "last name">
